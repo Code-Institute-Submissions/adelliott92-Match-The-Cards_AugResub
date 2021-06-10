@@ -34,8 +34,9 @@ nav {
     align-items: center;
 }
 
-.mtc-brand>h1 {
+.mtc-brand>h1, .mtc-brand>p {
     margin-left: 15px;
+    font-weight: bold;
 }
 
 /* Dark mode feature*/

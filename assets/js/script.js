@@ -92,4 +92,12 @@ $(document).ready(function () {
 
   deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
 
+  // When the game ends give the user sweetalert to tell them that they've won.
+  let allCardsFlipped = document.getElementsByClassName('card-item flip').length
+  
+  if(allCardsFlipped === 12){
+    // Show alert
+  } else{
+    // Do nothing
+  }
 })

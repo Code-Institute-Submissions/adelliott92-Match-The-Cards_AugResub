@@ -148,6 +148,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ### Known Bugs
 
 - The reset feature resets entire website and settings when should really only reset card grid.
+- When the game ends sweetalerts2 popup does not show.
 
 <a name="credits"></a>
 ### Credits
