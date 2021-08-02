@@ -9,25 +9,33 @@ $(document).ready(function () {
     $('.back-face').toggleClass('grey-backface');
     $('.front-face').toggleClass('grey-frontface');
     $('.how-to, #reset-btn').toggleClass('grey-background');
+    switchSound.play()
   })
 
   // Main content
   // Card grid functionality for when user selects a card and how cards should responds when users get a match.
+  // Game variables
   const deckOfCards = document.querySelectorAll('.card-item');
   let cardFlipped = false;
   let cardBoardLocked = false;
   let cardOne, cardTwo;
   let startingScore = document.getElementById('score').innerHTML;
   let playerScore = parseInt(startingScore);
-  let allMatchesFound = document.querySelectorAll('.flip').length;
   let resetBtn = document.getElementById('reset-btn')
   let cardGrid = document.getElementById('card-grid')
+  
+  // Game Sounds
+  const cardFlipSound = new Audio("assets/sounds/card-flip.wav")
+  const correctSound = new Audio("assets/sounds/correct.wav")
+  const wrongSound = new Audio("assets/sounds/wrong.mp3")
+  const switchSound = new Audio("assets/sounds/switch.wav")
 
   function cardFlip() {
     if (cardBoardLocked) return;
     if (this === cardOne) return;
 
     this.classList.add('flip');
+    cardFlipSound.play();
 
     if (!cardFlipped) {
       // First card selection
@@ -46,12 +54,13 @@ $(document).ready(function () {
   // matchCheck() function will compare the values of data-framework attribute using strict equality and if it is true or false using the ternary operator it will either cardsDisabled() function or lockCard() function
   function matchCheck() {
     let matchFind = cardOne.dataset.framework === cardTwo.dataset.framework;
-
+    
     matchFind ? cardsDisabled() : lockCard();
   }
 
   // cardsDisabled() function locks the cards at front face and remove the click event listener when the player has found a match.
   function cardsDisabled() {
+    correctSound.play()
     cardOne.removeEventListener('click', cardFlip);
     cardTwo.removeEventListener('click', cardFlip);
     playerScore += 5;
@@ -62,11 +71,12 @@ $(document).ready(function () {
   // If the player is wrong and doesn't get match lockCard() function flips the cards back to the back card face but doesn't flip card for few seconds.
   function lockCard() {
     cardBoardLocked = true;
+    wrongSound.play()
 
     setTimeout(() => {
       cardOne.classList.remove('flip');
       cardTwo.classList.remove('flip');
-      if (playerScore <= 0) {
+      if (playerScore <= 1) {
         playerScore = 0
         document.getElementById('score').innerHTML = String(playerScore);
       } else {
@@ -95,6 +105,8 @@ $(document).ready(function () {
 
   // The reset button
   resetBtn.addEventListener('click', function () {
+    cardFlipSound.play();
+
     // Cardshuffle function will reshuffle the cards
     (function cardShuffle() {
       deckOfCards.forEach(card => {
