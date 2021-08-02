@@ -8,7 +8,7 @@ $(document).ready(function () {
     $('.dark-mode-button').toggleClass('grey-background');
     $('.back-face').toggleClass('grey-backface');
     $('.front-face').toggleClass('grey-frontface');
-    $('.how-to, .reset, .no-reset').toggleClass('grey-background');
+    $('.how-to, #reset-btn').toggleClass('grey-background');
   })
 
   // Main content
@@ -20,7 +20,8 @@ $(document).ready(function () {
   let startingScore = document.getElementById('score').innerHTML;
   let playerScore = parseInt(startingScore);
   let allMatchesFound = document.querySelectorAll('.flip').length;
-  
+  let resetBtn = document.getElementById('reset-btn')
+  let cardGrid = document.getElementById('card-grid')
 
   function cardFlip() {
     if (cardBoardLocked) return;
@@ -92,12 +93,26 @@ $(document).ready(function () {
 
   deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
 
-  // When the game ends give the user sweetalert to tell them that they've won.
-  let allCardsFlipped = document.getElementsByClassName('card-item flip').length
-  
-  if(allCardsFlipped === 12){
-    // Show alert
-  } else{
-    // Do nothing
-  }
+  // The reset button
+  resetBtn.addEventListener('click', function () {
+    // Cardshuffle function will reshuffle the cards
+    (function cardShuffle() {
+      deckOfCards.forEach(card => {
+        let mixCards = Math.floor(Math.random() * 12);
+        card.style.order = mixCards;
+      });
+    })();
+
+    // Re-adds the event listeners to the cards
+    deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
+
+    // Removes flip class from card item divs so thats cards go back to showing the back face
+    for (let i = 0; i < deckOfCards.length; i++) {
+      deckOfCards[i].classList.remove('flip') 
+    }
+
+    // Resets player score to 0
+    playerScore = 0
+    document.getElementById('score').innerHTML = String(playerScore);
+  })
 })

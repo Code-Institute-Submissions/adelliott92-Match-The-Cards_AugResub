@@ -102,7 +102,7 @@ nav {
     width: 100%;
 }
 
-.card-grid {
+#card-grid {
     width: 550px;
     height: 360px;
     margin-top: 15px;
@@ -183,14 +183,14 @@ button{
     transition: 1s;
 }
 
-.reset, .no-reset{
+#reset-btn, .no-reset{
     color: #fff;
     border: 0;
     height: 20px;
     width: 100px;
 }
 
-.reset:hover{
+#reset-btn:hover{
     background-color: red!important;
     transition: 1s;
 }
@@ -230,7 +230,7 @@ button{
         margin-right: auto;
     }
 
-    .card-grid {
+    #card-grid {
         width: 650px;
         height: 435px;
     }
@@ -277,7 +277,7 @@ button{
         transition: 1s;
     }
     
-    .reset, .no-reset{
+    #reset-btn, .no-reset{
         color: #fff;
         border: 0;
         height: 32px;
@@ -285,7 +285,7 @@ button{
         font-size: 1.4em;
     }
     
-    .reset:hover{
+    #reset-btn:hover{
         background-color: red!important;
         transition: 1s;
     }
@@ -338,7 +338,7 @@ button{
         border-radius: 50px;
     }
 
-    .card-grid {
+    #card-grid {
         width: 500px;
         height: 350px;
     }
@@ -349,7 +349,7 @@ button{
 }
 
 @media only screen and (max-width: 480px) {
-    .card-grid {
+    #card-grid {
         width: 350px;
         height: 250px;
     }
@@ -362,7 +362,7 @@ button{
 
 @media only screen and (max-width: 350px) {
 
-    .card-grid {
+    #card-grid {
         width: 300px;
         height: 220px;
     }
@@ -431,7 +431,7 @@ button{
         width: 100px;
     }
 
-    .card-grid {
+    #card-grid {
         margin-top: 0px;
         width: 350px;
         height: 250px;
