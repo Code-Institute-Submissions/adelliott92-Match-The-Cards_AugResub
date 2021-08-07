@@ -91,14 +91,13 @@ nav {
     backface-visibility: hidden;
 }
 
-
 .white-background {
     background: #ffffff;
 }
 
 /* Main section */
 
-.card-board {
+#card-board {
     width: 100%;
 }
 
@@ -183,7 +182,7 @@ button{
     transition: 1s;
 }
 
-#reset-btn, .no-reset{
+#reset-btn{
     color: #fff;
     border: 0;
     height: 20px;
@@ -193,6 +192,12 @@ button{
 #reset-btn:hover{
     background-color: red!important;
     transition: 1s;
+}
+
+/* Sweet Alerts */
+.swal2-styled.swal2-confirm{
+    height: 35px;
+    background-color: #430775;
 }
 
 /* How to play - how-to-play.html */
@@ -277,7 +282,7 @@ button{
         transition: 1s;
     }
     
-    #reset-btn, .no-reset{
+    #reset-btn{
         color: #fff;
         border: 0;
         height: 32px;

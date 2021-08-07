@@ -23,12 +23,15 @@ $(document).ready(function () {
   let playerScore = parseInt(startingScore);
   let resetBtn = document.getElementById('reset-btn')
   let cardGrid = document.getElementById('card-grid')
+  let cardBoard = document.getElementById('card-board')
+  let allCardsMatched = document.getElementsByClassName('flip')
   
   // Game Sounds
   const cardFlipSound = new Audio("assets/sounds/card-flip.wav")
   const correctSound = new Audio("assets/sounds/correct.wav")
   const wrongSound = new Audio("assets/sounds/wrong.mp3")
   const switchSound = new Audio("assets/sounds/switch.wav")
+  const winSound = new Audio("assets/sounds/game-won.wav")
 
   function cardFlip() {
     if (cardBoardLocked) return;
@@ -65,6 +68,11 @@ $(document).ready(function () {
     cardTwo.removeEventListener('click', cardFlip);
     playerScore += 5;
     document.getElementById('score').innerHTML = String(playerScore);
+
+    if(allCardsMatched.length === 12){
+      gameComplete()
+    }
+
     gameReset();
   }
 
@@ -127,4 +135,14 @@ $(document).ready(function () {
     playerScore = 0
     document.getElementById('score').innerHTML = String(playerScore);
   })
+
+  function gameComplete(){
+    winSound.play()
+    Swal.fire({
+      icon: 'success',
+      title: 'YOU FOUND ALL MATCHES',
+      text: 'DO YOU WANT TO PLAY AGAIN?',
+      position: 'top'
+    })
+  }
 })
