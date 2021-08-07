@@ -22,6 +22,7 @@ $(document).ready(function () {
   let startingScore = document.getElementById('score').innerHTML;
   let playerScore = parseInt(startingScore);
   let previousScores = []
+  let previousScoresEl = document.getElementById('previousScores')
   let resetBtn = document.getElementById('reset-btn')
   let cardGrid = document.getElementById('card-grid')
   let cardBoard = document.getElementById('card-board')
@@ -135,6 +136,7 @@ $(document).ready(function () {
     // Resets player score to 0
     playerScore = 0
     document.getElementById('score').innerHTML = String(playerScore);
+    previousScoresEl.innerHTML = ""
   }
   
 
@@ -143,6 +145,21 @@ $(document).ready(function () {
   
   // Sweet alert pop up box that shows user previous scores and let the user play again.
   function gameComplete() {
+    previousScores.unshift(playerScore)
+
+    let score = JSON.stringify(previousScores)
+    localStorage.setItem('scores', score)
+    let getScores = localStorage.getItem('scores')
+    score = JSON.parse(getScores)
+
+    if(score.length > 5){
+      previousScores.pop()
+    }
+
+    for(let i = 0; i < score.length; i++){
+      previousScoresEl.innerHTML += `<li>Score: ${score[i]}</li>`
+    }
+
     winSound.play()
     Swal.fire({
       icon: 'success',

@@ -156,6 +156,16 @@ nav {
     margin-right: auto;
 }
 
+#scores{
+    width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#previousScores{
+    list-style: none;
+}
+
 button{
     background-color: #500a73;
     color: #fff;
@@ -193,6 +203,8 @@ button{
     background-color: red!important;
     transition: 1s;
 }
+
+
 
 /* Sweet Alerts */
 .swal2-styled.swal2-confirm{
@@ -245,6 +257,12 @@ button{
 
 
 @media only screen and (min-width: 960px){
+    #scores{
+        width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     .results {
         margin-top: 5px;
         width: 640px;
@@ -350,7 +368,7 @@ button{
         height: 350px;
     }
 
-    .results {
+    .results, #scores {
         width: 500px;
     }
 }
@@ -361,7 +379,7 @@ button{
         height: 250px;
     }
 
-    .results {
+    .results, #scores {
         width: 350px;
     }
 }
@@ -374,7 +392,7 @@ button{
         height: 220px;
     }
 
-    .results {
+    .results, #scores {
         width: 300px;
     }
 
@@ -444,7 +462,7 @@ button{
         height: 250px;
     }
 
-    .results {
+    .results, #scores {
         width: 350px;
         margin-left: auto;
         margin-right: auto;
