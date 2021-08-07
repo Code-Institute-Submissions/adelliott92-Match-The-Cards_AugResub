@@ -21,6 +21,7 @@ $(document).ready(function () {
   let cardOne, cardTwo;
   let startingScore = document.getElementById('score').innerHTML;
   let playerScore = parseInt(startingScore);
+  let previousScores = []
   let resetBtn = document.getElementById('reset-btn')
   let cardGrid = document.getElementById('card-grid')
   let cardBoard = document.getElementById('card-board')
@@ -95,7 +96,7 @@ $(document).ready(function () {
     }, 1500);
   }
 
-  // When the user has found match that doesn't match its stop the player from selecting any other cards until setTimeout() function has flipped the cards back to its normal state.
+  // When the user hasn't found a match its stop the player from selecting any other cards until setTimeout() function has flipped the cards back to its normal state.
   function gameReset() {
     [cardFlipped, cardBoardLocked] = [false, false];
     [cardOne, cardTwo] = [null, null];
@@ -111,8 +112,8 @@ $(document).ready(function () {
 
   deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
 
-  // The reset button
-  resetBtn.addEventListener('click', function () {
+  // gameRestart() will restart the game for the user.
+  function gameRestart(){
     cardFlipSound.play();
 
     // Cardshuffle function will reshuffle the cards
@@ -134,9 +135,13 @@ $(document).ready(function () {
     // Resets player score to 0
     playerScore = 0
     document.getElementById('score').innerHTML = String(playerScore);
-  })
+  }
   
 
+  // The reset button
+  resetBtn.addEventListener('click', gameRestart)
+  
+  // Sweet alert pop up box that shows user previous scores and let the user play again.
   function gameComplete() {
     winSound.play()
     Swal.fire({
@@ -146,27 +151,7 @@ $(document).ready(function () {
       position: 'top',
     }).then((result) => {
       if (result.isConfirmed) {
-        cardFlipSound.play();
-
-        // Cardshuffle function will reshuffle the cards
-        (function cardShuffle() {
-          deckOfCards.forEach(card => {
-            let mixCards = Math.floor(Math.random() * 12);
-            card.style.order = mixCards;
-          });
-        })();
-
-        // Re-adds the event listeners to the cards
-        deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
-
-        // Removes flip class from card item divs so thats cards go back to showing the back face
-        for (let i = 0; i < deckOfCards.length; i++) {
-          deckOfCards[i].classList.remove('flip')
-        }
-
-        // Resets player score to 0
-        playerScore = 0
-        document.getElementById('score').innerHTML = String(playerScore);
+        gameRestart()
       }
     })
   }
