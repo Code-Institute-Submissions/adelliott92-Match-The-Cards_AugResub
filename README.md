@@ -1,5 +1,5 @@
 # MATCH THE CARDS!
-![Match the cards readme banner](assets/images/readme/mtc-banner.png)
+![Match the cards readme banner](assets/images/readme/mtc-banner.PNG)
 
 ## About
 Match the cards is memory game to test your memory. Anyone can play this game on their smartphone, tablet or laptop. The aim of the game for the player is to find all matches and get a high score. The hardest challenge will be to find all matches in one go.
