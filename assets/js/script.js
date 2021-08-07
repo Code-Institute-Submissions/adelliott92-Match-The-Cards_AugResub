@@ -25,7 +25,7 @@ $(document).ready(function () {
   let cardGrid = document.getElementById('card-grid')
   let cardBoard = document.getElementById('card-board')
   let allCardsMatched = document.getElementsByClassName('flip')
-  
+
   // Game Sounds
   const cardFlipSound = new Audio("assets/sounds/card-flip.wav")
   const correctSound = new Audio("assets/sounds/correct.wav")
@@ -57,7 +57,7 @@ $(document).ready(function () {
   // matchCheck() function will compare the values of data-framework attribute using strict equality and if it is true or false using the ternary operator it will either cardsDisabled() function or lockCard() function
   function matchCheck() {
     let matchFind = cardOne.dataset.framework === cardTwo.dataset.framework;
-    
+
     matchFind ? cardsDisabled() : lockCard();
   }
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
     playerScore += 5;
     document.getElementById('score').innerHTML = String(playerScore);
 
-    if(allCardsMatched.length === 12){
+    if (allCardsMatched.length === 12) {
       gameComplete()
     }
 
@@ -128,21 +128,46 @@ $(document).ready(function () {
 
     // Removes flip class from card item divs so thats cards go back to showing the back face
     for (let i = 0; i < deckOfCards.length; i++) {
-      deckOfCards[i].classList.remove('flip') 
+      deckOfCards[i].classList.remove('flip')
     }
 
     // Resets player score to 0
     playerScore = 0
     document.getElementById('score').innerHTML = String(playerScore);
   })
+  
 
-  function gameComplete(){
+  function gameComplete() {
     winSound.play()
     Swal.fire({
       icon: 'success',
       title: 'YOU FOUND ALL MATCHES',
-      text: 'DO YOU WANT TO PLAY AGAIN?',
-      position: 'top'
+      confirmButtonText: 'PLAY AGAIN',
+      position: 'top',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        cardFlipSound.play();
+
+        // Cardshuffle function will reshuffle the cards
+        (function cardShuffle() {
+          deckOfCards.forEach(card => {
+            let mixCards = Math.floor(Math.random() * 12);
+            card.style.order = mixCards;
+          });
+        })();
+
+        // Re-adds the event listeners to the cards
+        deckOfCards.forEach(card => card.addEventListener('click', cardFlip));
+
+        // Removes flip class from card item divs so thats cards go back to showing the back face
+        for (let i = 0; i < deckOfCards.length; i++) {
+          deckOfCards[i].classList.remove('flip')
+        }
+
+        // Resets player score to 0
+        playerScore = 0
+        document.getElementById('score').innerHTML = String(playerScore);
+      }
     })
   }
 })

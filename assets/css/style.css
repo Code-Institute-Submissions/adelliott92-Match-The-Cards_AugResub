@@ -197,7 +197,9 @@ button{
 /* Sweet Alerts */
 .swal2-styled.swal2-confirm{
     height: 35px;
+    width: fit-content;
     background-color: #430775;
+    font-weight: bold;
 }
 
 /* How to play - how-to-play.html */
