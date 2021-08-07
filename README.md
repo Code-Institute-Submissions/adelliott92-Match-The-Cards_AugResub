@@ -30,8 +30,23 @@ You can visit the website and play the game by [clicking here](https://adelliott
 As a first time visitor I want...
 * The ability to play game on my mobile, tablet or laptop so I can play the game while on my daily commute or on the go.
 * To find instructions easily by navigating through the site on how to play the game.
+* To hear sounds for when I get match or don't get match or when I enable dark mode.
 * To find out more about developer of the game.
 * To find contact info to report issues to developer that I came across while playing the game.
+* The ability to restart the game if my score is poor.
+* The ability to keep track of my high scores and when I open application again that my previous scores are still recorded.
+
+![Previous player scores](assets/images/readme/scores.PNG)
+
+* To get notified when I've won the game and have option to play again.
+
+![Won the game alert](assets/images/readme/play-again.PNG)
+
+#### Color Selection
+
+The color selection for site was simple selection by giving background to cards lighter background to give the effect that cards are flat on a table and same effect is when site has dark mode enabled 
+
+![Color Selection](assets/images/readme/color-selection.PNG)
 
 <a name="features"></a>
 ### Features
@@ -87,12 +102,20 @@ In future releases we plan on releasing features that track the visitors score f
 - [WebAIM Constrast Checker](https://webaim.org/resources/contrastchecker/) - WebAIM Constrast Checker tool was used to ensure contrast between foreground and background colors meets accessibility guidelines.
 - [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) - This tool was used to ensure that web content on the website was more accessible to individuals with disabilities and meet accessibility guidelines.
 - [Can I Use...](https://caniuse.com/) - It was used to check what techologies were supported in different web browser versions.
+- [Webdriver.io](https://webdriver.io/) - This browser automation framework was used to test application a number of times to if it was produce any errors when user is playing the application repeatedly.
+
 
 #### Further Testing
 
+Manual Testing
 - The website was tested in Google Chrome, Mozilla Firefox Developer, Opera, Microsoft Edge, Safari and Internet Explorer.
 - The website was tested across a multipe device resolutions using Google Chrome developer tools and Mozilla Firefox developer tools.
 - Family, Code Institute Mentor, Friends and work colleagues were asked to test and review the website to spot any issues from their devices and get their point of view of what they thought about the website.
+
+Automated Testing
+- Webdriver.io was used for automating testing to test site functionality and to see if the site would crash if played repeatedly over a number of times.
+
+
 
 <a name="deployment"></a>
 ### Deployment
@@ -147,21 +170,30 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 <a name="bugs"></a>
 ### Known Bugs
 
-- The reset feature resets entire website and settings when should really only reset card grid.
-- When the game ends sweetalerts2 popup does not show.
+- Previous scores array from local storage is repeated instead of just showing the scores and not repeating the same values.
 
 <a name="credits"></a>
 ### Credits
 
 #### Code
 
-- ![sweetalert2](https://sweetalert2.github.io/) - Sweetalerts2 was used to create a popup at the end of the game showing the users score and give them option to play the game again.
+- [Sweetalert2](https://sweetalert2.github.io/) - Sweetalerts2 was used to create a popup at the end of the game showing the users score and give them option to play the game again.
 
 #### Media
 
 All icons were sourced from following author on Flaticon.com
 
 [Freepik](https://www.flaticon.com/authors/freepik)
+
+All sounds for the game were sourced from following authors on Freesound.org
+
+[F4ngy](https://freesound.org/people/f4ngy/) - card flip sound
+
+[InspectorJ](https://freesound.org/people/InspectorJ/) - correct sound
+
+[Raclure](https://freesound.org/people/Raclure/) - wrong sound
+
+[Joedeshon](https://freesound.org/people/joedeshon/) - win sound
 
 #### Acknowledgements
 

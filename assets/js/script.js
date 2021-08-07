@@ -135,8 +135,7 @@ $(document).ready(function () {
 
     // Resets player score to 0
     playerScore = 0
-    document.getElementById('score').innerHTML = String(playerScore);
-    previousScoresEl.innerHTML = ""
+    document.getElementById('score').innerHTML = String(playerScore);x
   }
   
 
@@ -171,5 +170,9 @@ $(document).ready(function () {
         gameRestart()
       }
     })
+  }
+
+  function gameDifficulty(){
+
   }
 })
